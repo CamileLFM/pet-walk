@@ -17,24 +17,30 @@ class WelcomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text( //titulo com sombras
+                Text(
                   'Pet Walk',
                   style: TextStyle(
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF3575D3),
+                    fontSize: 48,
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w900,
+                    color: Color(0xFF87BFFF), // azul claro
                     shadows: [
                       Shadow(
-                        offset: Offset(0, 4),
+                        offset: Offset(2, 2),
+                        blurRadius: 0,
+                        color: Colors.white, // contorno branco
+                      ),
+                      Shadow(
+                        offset: Offset(4, 4),
                         blurRadius: 10,
-                        color: Color(0x403575D3),
+                        color: Color(0x2087BFFF), // sombra azul suave
                       ),
                     ],
                   ),
                 ),
                 // foto
                 Image.asset(
-                  'pet-walk\assets\images\profile.png',
+                  'assets/images/pet_walk_intro.png',
                   height: size.height * 0.35,
                   fit: BoxFit.contain,
                 ),
