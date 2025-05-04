@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/login.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -33,7 +34,7 @@ class WelcomePage extends StatelessWidget {
                 ),
                 // foto
                 Image.asset(
-                  'assets/images/pet_walk_intro.png',
+                  'pet-walk\assets\images\profile.png',
                   height: size.height * 0.35,
                   fit: BoxFit.contain,
                 ),
@@ -45,7 +46,7 @@ class WelcomePage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.grey,
+                    color: Color.fromARGB(255, 90, 89, 89),
                     height: 1.5,
                   ),
                 ),
@@ -54,14 +55,19 @@ class WelcomePage extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      // colocar a proxima tela ao apertar o botao
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Login(), // Substitua por sua tela de login
+                        ),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40),
                       ),
-                      backgroundColor: const Color(0xFFF6F8FB),
+                      backgroundColor: const Color.fromARGB(255, 68, 126, 212),
                       elevation: 2,
                     ),
                     child: const Text(
