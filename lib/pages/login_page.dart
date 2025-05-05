@@ -1,15 +1,17 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'home_page.dart';
+import 'register_page.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -25,12 +27,12 @@ class _LoginState extends State<Login> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'New user',
+                'Welcome back!',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
               const Text(
-                'Account creation',
+                'Login to your account',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 32),
@@ -41,19 +43,12 @@ class _LoginState extends State<Login> {
                 ),
               ),
               const SizedBox(height: 32),
-              _buildLabel('Full name'),
-              _buildTextFormField(
-                controller: _fullNameController,
-                hint: 'Full name',
-                validatorMessage: 'Please enter your full name',
-              ),
-              const SizedBox(height: 20),
               _buildLabel('Email address'),
               _buildTextFormField(
                 controller: _emailController,
                 hint: 'Email address',
                 keyboardType: TextInputType.emailAddress,
-                validatorMessage: 'Please enter a valid email',
+                validatorMessage: 'Please enter your email',
               ),
               const SizedBox(height: 20),
               _buildLabel('Password'),
@@ -68,11 +63,19 @@ class _LoginState extends State<Login> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      // Processar a criação de conta
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const HomePage(),
+                        ),
+                      );
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 60,
+                      vertical: 20,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40),
                     ),
@@ -80,7 +83,7 @@ class _LoginState extends State<Login> {
                     backgroundColor: const Color.fromARGB(255, 68, 126, 212),
                   ),
                   child: const Text(
-                    'Create my account',
+                    'Login',
                     style: TextStyle(
                       color: Colors.black87,
                       fontWeight: FontWeight.bold,
@@ -93,20 +96,30 @@ class _LoginState extends State<Login> {
               Center(
                 child: RichText(
                   text: TextSpan(
-                    text: 'You have an account? ',
+                    text: 'Don’t have an account? ',
                     style: TextStyle(color: Colors.grey[700]),
-                    children: const [
+                    children: [
                       TextSpan(
-                        text: 'Login',
-                        style: TextStyle(
+                        text: 'Sign up',
+                        style: const TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
                         ),
+                        recognizer:
+                            TapGestureRecognizer()
+                              ..onTap = () {
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignUpPage(),
+                                  ),
+                                );
+                              },
                       ),
                     ],
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -119,7 +132,11 @@ class _LoginState extends State<Login> {
       padding: const EdgeInsets.only(left: 4),
       child: Text(
         label,
-        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.grey[700]),
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          color: Colors.grey[700],
+        ),
       ),
     );
   }
@@ -144,8 +161,11 @@ class _LoginState extends State<Login> {
       decoration: InputDecoration(
         hintText: hint,
         filled: true,
-        fillColor: Colors.white, // Destaque no campo
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        fillColor: Colors.white,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 16,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,

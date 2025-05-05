@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class PetHomePage extends StatelessWidget {
-  const PetHomePage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,7 @@ class PetHomePage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: ListView(
             children: [
               const SizedBox(height: 16),
               const Text(
@@ -55,7 +54,7 @@ class PetHomePage extends StatelessWidget {
                     ClipRRect(
                       borderRadius: BorderRadius.circular(50),
                       child: Image.asset(
-                        'assets/images/dog_profile.png', // Substitua por sua imagem
+                        'assets/images/dog_profile.png',
                         width: 60,
                         height: 60,
                         fit: BoxFit.cover,
@@ -110,7 +109,7 @@ class PetHomePage extends StatelessWidget {
                 "2 walks left",
                 Colors.orange,
               ),
-              const Spacer(),
+              const SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
                 height: 56,
