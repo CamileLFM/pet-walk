@@ -9,7 +9,7 @@ class WelcomePage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFF2F2F2),
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -23,17 +23,17 @@ class WelcomePage extends StatelessWidget {
                     fontSize: 48,
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.w900,
-                    color: Color(0xFF87BFFF), // azul claro
+                    color: Color(0xFF87BFFF),
                     shadows: [
                       Shadow(
                         offset: Offset(2, 2),
                         blurRadius: 0,
-                        color: Colors.white, // contorno branco
+                        color: Colors.white,
                       ),
                       Shadow(
                         offset: Offset(4, 4),
                         blurRadius: 10,
-                        color: Color(0x2087BFFF), // sombra azul suave
+                        color: Color(0x2087BFFF),
                       ),
                     ],
                   ),
@@ -64,7 +64,7 @@ class WelcomePage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Login(), // Substitua por sua tela de login
+                          builder: (context) => Login(),
                         ),
                       );
                     },
