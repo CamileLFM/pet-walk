@@ -184,6 +184,3 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
-//testeando pr
-//testando 2
