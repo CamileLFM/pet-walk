@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/info_card.dart';
+import 'package:flutter_application_1/pages/pet_selection_page.dart';
+import 'package:flutter_application_1/pages/start_walk_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -35,63 +38,75 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 12),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.1),
-                      spreadRadius: 2,
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
-                ),
-                padding: const EdgeInsets.all(16),
-                child: Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(50),
-                      child: Image.asset(
-                        'assets/images/dog_profile.png',
-                        width: 60,
-                        height: 60,
-                        fit: BoxFit.cover,
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => StartWalkPage()),
+                  );
+                },
+                borderRadius: BorderRadius.circular(16),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        spreadRadius: 2,
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
                       ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
-                          Text(
-                            'Milou',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                    ],
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.asset(
+                          'assets/images/dog_profile.png',
+                          width: 60,
+                          height: 60,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Milou',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
                             ),
-                          ),
+                            Text(
+                              'American Pit Bull Terrier\n6 months old',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const Column(
+                        children: [
+                          Icon(Icons.more_horiz, color: Colors.grey),
                           Text(
-                            'American Pit Bull Terrier\n6 months old',
-                            style: TextStyle(fontSize: 12, color: Colors.grey),
+                            'Happy',
+                            style: TextStyle(
+                              color: Colors.blueAccent,
+                              fontSize: 12,
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                    const Column(
-                      children: [
-                        Icon(Icons.more_horiz, color: Colors.grey),
-                        Text(
-                          'Happy',
-                          style: TextStyle(
-                            color: Colors.blueAccent,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 24),
@@ -100,15 +115,12 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 16),
-              _buildStatCard("Today's plan", "10% accomplished", Colors.grey),
+              infoCard("Today's plan", "10% accomplished", false, null),
               const SizedBox(height: 12),
-              _buildStatCard("Energy available", "90% energy", Colors.blue),
+              infoCard("Energy available", "90% energy", false, null),
               const SizedBox(height: 12),
-              _buildStatCard(
-                "Weekly objectives",
-                "2 walks left",
-                Colors.orange,
-              ),
+              infoCard("Weekly objectives", "2 walks left", false, null),
+
               const SizedBox(height: 40),
               SizedBox(
                 width: double.infinity,
@@ -131,55 +143,6 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildStatCard(String title, String subtitle, Color color) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.08),
-            spreadRadius: 1,
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(subtitle, style: TextStyle(color: Colors.grey[600])),
-              ],
-            ),
-          ),
-          CircularProgressIndicator(
-            value:
-                title == "Today's plan"
-                    ? 0.1
-                    : title == "Energy available"
-                    ? 0.9
-                    : 0.8,
-            backgroundColor: Colors.grey[200],
-            valueColor: AlwaysStoppedAnimation<Color>(color),
-            strokeWidth: 6,
-          ),
-        ],
       ),
     );
   }
