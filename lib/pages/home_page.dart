@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/info_card.dart';
-import 'package:flutter_application_1/pages/pet_selection_page.dart';
+import 'package:flutter_application_1/pages/start_walk_page.dart';
 import 'package:flutter_application_1/pages/start_walk_page.dart';
 
 class HomePage extends StatelessWidget {
