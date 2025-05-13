@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'core/theme/app_theme.dart';
 import 'pages/welcome_page.dart';
 
 void main() {
@@ -11,18 +12,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pet Walk',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'Roboto',
-        primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.white,
-        useMaterial3: true,
-      ),
+      title: 'Pet Walk',
+      theme: AppTheme.lightTheme,
       home: const WelcomePage(),
-      routes: {
-        // '/next': (context) => const NextPage(), // colocar outra tela
-      },
     );
   }
 }

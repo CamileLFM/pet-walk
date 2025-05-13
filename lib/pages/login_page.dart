@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/widgets/primary_button.dart';
 import 'home_page.dart';
 import 'register_page.dart';
 
@@ -60,7 +61,8 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 40),
               Center(
-                child: ElevatedButton(
+                child: PrimaryButton(
+                  text: 'Login',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       Navigator.pushReplacement(
@@ -71,25 +73,6 @@ class _LoginPageState extends State<LoginPage> {
                       );
                     }
                   },
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 60,
-                      vertical: 20,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(40),
-                    ),
-                    elevation: 2,
-                    backgroundColor: const Color.fromARGB(255, 68, 126, 212),
-                  ),
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
                 ),
               ),
               const SizedBox(height: 20),
@@ -111,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const SignUpPage(),
+                                    builder: (context) => const RegisterPage(),
                                   ),
                                 );
                               },
