@@ -65,12 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                   text: 'Login',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        ),
-                      );
+                      Navigator.pushReplacementNamed(context, '/home');
                     }
                   },
                 ),
@@ -91,11 +86,9 @@ class _LoginPageState extends State<LoginPage> {
                         recognizer:
                             TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.pushReplacement(
+                                Navigator.pushReplacementNamed(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const RegisterPage(),
-                                  ),
+                                  '/register',
                                 );
                               },
                       ),

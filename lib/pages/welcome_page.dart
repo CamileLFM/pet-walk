@@ -46,12 +46,7 @@ class WelcomePage extends StatelessWidget {
                   backgroundColor: const Color.fromARGB(255, 255, 255, 255),
                   textColor: Colors.black,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const RegisterPage(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/register');
                   },
                 ),
               ],

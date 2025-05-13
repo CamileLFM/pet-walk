@@ -73,12 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   text: 'Create my account',
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const HomePage(),
-                        ),
-                      );
+                      Navigator.pushReplacementNamed(context, '/home');
                     }
                   },
                 ),
@@ -99,11 +94,9 @@ class _RegisterPageState extends State<RegisterPage> {
                         recognizer:
                             TapGestureRecognizer()
                               ..onTap = () {
-                                Navigator.pushReplacement(
+                                Navigator.pushReplacementNamed(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const LoginPage(),
-                                  ),
+                                  '/login',
                                 );
                               },
                       ),
