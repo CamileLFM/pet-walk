@@ -1,16 +1,15 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/widgets/primary_button.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class Login extends StatefulWidget {
+  const Login({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Login> createState() => _LoginState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
+  final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -26,12 +25,12 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Welcome back!',
+                'New user',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 4),
               const Text(
-                'Login to your account',
+                'Account creation',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 32),
@@ -42,12 +41,19 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 32),
+              _buildLabel('Full name'),
+              _buildTextFormField(
+                controller: _fullNameController,
+                hint: 'Full name',
+                validatorMessage: 'Please enter your full name',
+              ),
+              const SizedBox(height: 20),
               _buildLabel('Email address'),
               _buildTextFormField(
                 controller: _emailController,
                 hint: 'Email address',
                 keyboardType: TextInputType.emailAddress,
-                validatorMessage: 'Please enter your email',
+                validatorMessage: 'Please enter a valid email',
               ),
               const SizedBox(height: 20),
               _buildLabel('Password'),
@@ -59,41 +65,48 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 40),
               Center(
-                child: PrimaryButton(
-                  text: 'Login',
+                child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      Navigator.pushReplacementNamed(context, '/home');
+                      // Processar a criação de conta
                     }
                   },
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    elevation: 2,
+                    backgroundColor: const Color.fromARGB(255, 68, 126, 212),
+                  ),
+                  child: const Text(
+                    'Create my account',
+                    style: TextStyle(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
               Center(
                 child: RichText(
                   text: TextSpan(
-                    text: 'Don’t have an account? ',
+                    text: 'You have an account? ',
                     style: TextStyle(color: Colors.grey[700]),
-                    children: [
+                    children: const [
                       TextSpan(
-                        text: 'Sign up',
-                        style: const TextStyle(
+                        text: 'Login',
+                        style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.bold,
                         ),
-                        recognizer:
-                            TapGestureRecognizer()
-                              ..onTap = () {
-                                Navigator.pushReplacementNamed(
-                                  context,
-                                  '/register',
-                                );
-                              },
                       ),
                     ],
                   ),
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -106,11 +119,7 @@ class _LoginPageState extends State<LoginPage> {
       padding: const EdgeInsets.only(left: 4),
       child: Text(
         label,
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-          color: Colors.grey[700],
-        ),
+        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.grey[700]),
       ),
     );
   }
@@ -135,11 +144,8 @@ class _LoginPageState extends State<LoginPage> {
       decoration: InputDecoration(
         hintText: hint,
         filled: true,
-        fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 16,
-        ),
+        fillColor: Colors.white, // Destaque no campo
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,
