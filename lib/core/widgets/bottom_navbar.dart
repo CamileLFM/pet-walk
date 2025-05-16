@@ -21,10 +21,10 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         Navigator.pushNamed(context, '/home');
         break;
       case 1:
-        // Navigator.pushNamed(context, '/pets');
+        Navigator.pushNamed(context, '/myPets');
         break;
       case 2:
-        // Navigator.pushNamed(context, '/favorites');
+        Navigator.pushNamed(context, '/community');
         break;
       case 3:
         Navigator.pushNamed(context, '/profile');
@@ -35,7 +35,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFFD1FFFD),
       selectedItemColor: const Color(0xFF87BFFF),
       unselectedItemColor: Colors.grey[400],
       type: BottomNavigationBarType.fixed,
@@ -44,7 +44,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.pets), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.favorite), label: ''),
+        BottomNavigationBarItem(icon: Icon(Icons.public), label: ''),
         BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
       ],
     );

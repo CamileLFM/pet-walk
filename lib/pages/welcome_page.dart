@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/widgets/primary_button.dart';
-import '../core/widgets/primary_button.dart'; // botão customizado
-import 'register_page.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -40,7 +38,6 @@ class WelcomePage extends StatelessWidget {
                     height: 1.5,
                   ),
                 ),
-
                 PrimaryButton(
                   text: "Let’s start",
                   backgroundColor: const Color.fromARGB(255, 255, 255, 255),

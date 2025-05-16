@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/community_page.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
+import 'package:flutter_application_1/pages/my_pets_page.dart';
 import 'package:flutter_application_1/pages/profile_page.dart';
 import 'package:flutter_application_1/pages/register_page.dart';
 import 'core/theme/app_theme.dart';
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomePage(),
         '/login': (context) => const LoginPage(),
         '/profile': (context) => const ProfilePage(),
+        '/community': (context) => const CommunityPage(),
+        '/myPets': (context) => const MyPetsPage(),
       },
     );
   }

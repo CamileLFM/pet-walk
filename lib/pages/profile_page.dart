@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/widgets/bottom_navbar.dart';
 
-void main() {
-  runApp(
-    const MaterialApp(home: ProfilePage(), debugShowCheckedModeBanner: false),
-  );
-}
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -15,11 +9,10 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  int _currentIndex = 3;
   int _selectedTab = 0;
 
   final List<String> samplePhotos = List.generate(
-    12,
+    18,
     (index) => 'https://picsum.photos/seed/photo$index/200/200',
   );
 
@@ -46,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  'Profil',
+                  'Profile',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
                 ),
               ),
@@ -55,9 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ListTile(
               leading: const CircleAvatar(
                 radius: 30,
-                backgroundImage: NetworkImage(
-                  'https://picsum.photos/id/1005/200',
-                ),
+                backgroundImage: AssetImage('assets/images/profile.png'),
               ),
               title: const Text(
                 'Patrick Duloup',
@@ -67,7 +58,6 @@ class _ProfilePageState extends State<ProfilePage> {
               trailing: const Icon(Icons.more_horiz),
               isThreeLine: true,
             ),
-            const SizedBox(height: 12),
             Row(
               children: [
                 Expanded(
